@@ -28,7 +28,6 @@ Not known. Three bugs, one fix queued. Each now has its own ticket.
   filed={{
     parser: { label: 'mega_dev#1', href: 'https://github.com/krzysztofgrys/mega_dev/issues/1' },
     hint: { label: 'mega_dev#2', href: 'https://github.com/krzysztofgrys/mega_dev/issues/2' },
-    shift: { label: 'mega_dev#3', href: 'https://github.com/krzysztofgrys/mega_dev/issues/3' },
   }}
 />
 
@@ -36,15 +35,16 @@ Not known. Three bugs, one fix queued. Each now has its own ticket.
 | --- | --- |
 | `parser` | The shared parser reads every date month first. Day-first tenants get day and month swapped in app, email and the booking-v2 form. |
 | `hint` | The booking-v3 form prints `MM/DD/YYYY`. People type the month first, the form reads the day first. Only through the form, only on booking-v3. |
-| `shift` | The date lands one day off, with no swap. Looks like a time zone problem; not verified. |
+| one-day move | The date lands one day off, with no swap. Looks like a time zone problem; not verified. Filed by tenant under `parser` above, footnoted under it. Ticket: [mega_dev#3](https://github.com/krzysztofgrys/mega_dev/issues/3). |
 
 ## How the reports were split
 
 - One id, one report: the export repeats some reports across pages. Counts use unique ids.
 - The cause comes from the tenant (its locale and booking form, `locales.ts`) and the channel,
   not from the intake tag. Intake guesses from the reporter's browser and is often wrong.
-- The one-day moves are the reports the desk itself noted in `desk-notes.json`. They were counted
-  under `parser` before. They now count as `shift`.
+- The one-day moves are the reports the desk itself noted in `desk-notes.json`. The desk files
+  them by tenant, so they stay in the `parser` count and show in the footnote. They are a third
+  bug all the same: the parser fix does not close them.
 
 ## Lessons
 
