@@ -14,11 +14,12 @@ signature: 'v1.eyJzdWIiOiI0MzAiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhd
 </script>
 
 [#4471](/kb/incidents/4471) was merged on subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject))
-and marked known: one bug, one fix queued. Its reports hold three bugs. The queued parser fix
-closes only the first one.
+and marked known: one bug, one fix queued. Its reports hold three bugs. On 5 October engineering
+closed #4471: the parser is fixed (`fix(dates): parse dd/mm for eu locales`) and the booking-v3 form
+is retired. Neither change touches the one-day move.
 
 <Callout kind="warn">
-Not known. Three bugs, one fix queued. Each now has its own ticket.
+Two bugs closed, one still open: the one-day move ([mega_dev#3](https://github.com/krzysztofgrys/mega_dev/issues/3)).
 </Callout>
 
 ## The three bugs
@@ -31,11 +32,11 @@ Not known. Three bugs, one fix queued. Each now has its own ticket.
   }}
 />
 
-| cause | what happens |
-| --- | --- |
-| `parser` | The shared parser reads every date month first. Day-first tenants get day and month swapped in app, email and the booking-v2 form. |
-| `hint` | The booking-v3 form prints `MM/DD/YYYY`. People type the month first, the form reads the day first. Only through the form, only on booking-v3. |
-| one-day move | The date lands one day off, with no swap. Looks like a time zone problem; not verified. Filed by tenant under `parser` above, footnoted under it. Ticket: [mega_dev#3](https://github.com/krzysztofgrys/mega_dev/issues/3). |
+| cause | what happens | state |
+| --- | --- | --- |
+| `parser` | The shared parser reads every date month first. Day-first tenants get day and month swapped in app, email and the booking-v2 form. | fixed, 5 Oct |
+| `hint` | The booking-v3 form prints `MM/DD/YYYY`. People type the month first, the form reads the day first. Only through the form, only on booking-v3. | won't fix: booking-v3 retired |
+| one-day move | The date lands one day off, with no swap. Looks like a time zone problem; not verified. Filed by tenant under `parser` above, footnoted under it. Ticket: [mega_dev#3](https://github.com/krzysztofgrys/mega_dev/issues/3). | **open** |
 
 ## How the reports were split
 
