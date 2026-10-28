@@ -1,0 +1,1 @@
+booking-v3 form shows MM/DD/YYYY hint but reads the date day first (33 reports from #4471)
