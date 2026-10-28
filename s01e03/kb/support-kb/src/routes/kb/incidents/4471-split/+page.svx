@@ -19,7 +19,9 @@ closed #4471: the parser is fixed (`fix(dates): parse dd/mm for eu locales`) and
 is retired. Neither change touches the one-day move.
 
 <Callout kind="warn">
+
 Two bugs closed, one still open: the one-day move ([mega_dev#3](https://github.com/krzysztofgrys/mega_dev/issues/3)).
+
 </Callout>
 
 ## The three bugs
